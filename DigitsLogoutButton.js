@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { NativeModules, Text, TouchableHighlight } from 'react-native';
+import { NativeModules, Text, TouchableOpacity } from 'react-native';
 
 class DigitsLogoutButton extends Component {
   constructor(props) {
@@ -26,9 +26,9 @@ class DigitsLogoutButton extends Component {
 
   render() {
     return (
-      <TouchableHighlight style={this.props.buttonStyle} underlayColor={this.props.highlightColor} onPress={this.buttonPressed} >
+      <TouchableOpacity style={this.props.buttonStyle} onPress={this.buttonPressed} >
         <Text style={this.props.textStyle}>{this.props.text}</Text>
-      </TouchableHighlight>
+      </TouchableOpacity>
     );
   }
 }

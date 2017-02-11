@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { NativeModules, Text, TouchableHighlight } from 'react-native';
+import { NativeModules, Text, TouchableOpacity, ActivityIndicator } from 'react-native';
 
 class DigitsLoginButton extends Component {
   constructor(props) {
@@ -31,11 +31,18 @@ class DigitsLoginButton extends Component {
     });
   }
 
+  renderButtonContent() {
+    if(this.props.isLoading)
+      return (<ActivityIndicator color='#fff'/>)
+    else
+      return (<Text style={this.props.textStyle}>{this.props.text}</Text>)
+  }
+
   render() {
     return (
-      <TouchableHighlight style={this.props.buttonStyle} underlayColor={this.props.highlightColor} onPress={this.buttonPressed} >
-        <Text style={this.props.textStyle}>{this.props.text}</Text>
-      </TouchableHighlight>
+      <TouchableOpacity style={this.props.buttonStyle} onPress={this.buttonPressed} disabled={this.props.isLoading}>
+        {this.renderButtonContent()}
+      </TouchableOpacity>
     );
   }
 }
